@@ -101,3 +101,68 @@ undefined, null, boolean, string, symbol{mutable}, number and object
 // console.log(`Before ${JSON.stringify(testArr)}`);
 // console.log(nextInLine(testArr, 6));
 // console.log(`After ${JSON.stringify(testArr)}`);
+// function trueOrFalse(itistrue) {
+//   if (itistrue) {
+//     return "Yes, it is true";
+//   }
+//   return "No, it's false";
+// }
+
+// console.log(trueOrFalse(1));
+
+// setup also equal logic
+// function testEqual(num1, num2) {
+//   if (num1 >= num2) {
+//     return ` ${num1} is large `;
+//   } else {
+//     return ` ${num2} is large `;
+//   }
+// }
+// console.log(testEqual(13, 6));
+// === value and type
+// console.log(3 === 3);
+// console.log(3 === "3");
+// console.log(10 == "10");
+// function testSize(num) {
+//   if (num < 5) {
+//     return "tiny";
+//   } else if (num < 10) {
+//     return "small";
+//   } else if (num < 15) {
+//     return "medium";
+//   } else if (num <= 20) {
+//     return "large";
+//   }
+// }
+
+// console.log(testSize(20));
+// Golf Code
+var names = [
+  "Hole-in-one",
+  "Eagle",
+  "Birdie",
+  "Par",
+  "Bogey",
+  "DoubleBogey",
+  "Go Home",
+];
+function GolfScore(par, strokes) {
+  if (strokes == 1) {
+    return names[0];
+  } else if (strokes <= par - 2) {
+    return names[1];
+  } else if (strokes == par - 1) {
+    return names[2];
+  } else if (strokes == par) {
+    return names[3];
+  } else if (strokes == par + 1) {
+    return names[4];
+  } else if (strokes == par + 2) {
+    return names[5];
+  } else if (strokes == par + 3) {
+    return names[6];
+  }
+
+  return "Change Me";
+}
+console.log(GolfScore(5, 8));
