@@ -463,3 +463,182 @@ function getTemp(avg_temp) {
   return tom;
 }
 console.log(getTemp(AVG_Temp)); */
+
+// destruct assignment with nested objects:-
+
+/* const AVG_Temp = {
+  today: { min: 77.5, max: 80 },
+  tomorrow: { min: 79, max: 90 },
+};
+function getTemp(avg_temp) {
+  "use strict";
+  const {
+    tomorrow: { max: maxOfTomorrow },
+  } = avg_temp;
+  return maxOfTomorrow;
+}
+console.log(getTemp(AVG_Temp)); */
+
+// Use destructing assignment to assign var from arrays
+// const [a, b, , d] = [1, 2, 3, 4];
+// console.log(a, b, d);
+
+/* let a = 8,
+  b = 6;
+() => {
+  "use strict"[(a, b)] = [b, a];
+};
+console.log(a);
+console.log(b); */
+
+// use destruct assignment with the rest operators :-
+/* const source = [1, 2, 3, 4];
+function removeFirstTwo(list) {
+  const [, , ...arr] = list;
+  return arr;
+}
+const arr = removeFirstTwo(source);
+console.log("after remove");
+console.log(arr);
+console.log("before remove");
+console.log(source); */
+// use destruct to pass an object as a fn's params
+// ajax example
+/* const stats = {
+  max: 5,
+  standard_divination: 7.5,
+  mode: 32.5,
+  min: -0.78,
+  avg: 38.9,
+};
+const half = (function () {
+  return function half({ max, min }) {
+    return (max, min) / 2.0;
+    // return `max is ${max} and min is ${min}`;
+  };
+})();
+
+console.log(stats);
+console.log(half(stats)); */
+// create string using temp literals
+/* var result = {
+  success: ["max-length", "no-amd", "performance error"],
+  failure: ["array", "function", "data"],
+  skipped: ["heap", "stack", "overflow"],
+};
+
+function makeList(arr) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(`<li class="text-warning">${arr[i]}</li>`);
+  }
+  return result;
+}
+const resultArr = makeList(result.failure);
+console.log(resultArr);
+document.write(resultArr); */
+
+// write concise object literal declarations using simple fields
+// instead of this :-
+/* const createPerson = (name, age, gender) => {
+  return {
+    name: name,
+    age: age,
+    gender: gender,
+  };
+};
+console.log(createPerson("ali", 50, "male"));
+
+//  this new
+const createPersonNew = (name, age, gender) => ({ name, age, gender });
+console.log(createPersonNew("ali", 50, "male")); */
+
+// write concise declarative fn:-
+// before
+// const bicycle = {
+//   gear: 2,
+//   setGear: function (newGear) {
+//     "use strict";
+//     this.gear = newGear;
+//   },
+// };
+// bicycle.setGear(3);
+// console.log(bicycle.gear);
+// after
+/* const bicycle = {
+  gear: 2,
+  setGear(newGear) {
+    "use strict";
+    this.gear = newGear;
+  },
+};
+bicycle.setGear(3);
+console.log(bicycle.gear); */
+
+// using class syntax to define constructor fn:-
+// old way :-
+/* var SpaceShuttle = function (target) {
+  this.target = target;
+};
+var zeus = new SpaceShuttle("neptune");
+console.log(zeus.target);
+ */
+/* class SpaceShuttle {
+  constructor(target) {
+    this.target = target;
+  }
+}
+var zeus = new SpaceShuttle("neptune");
+console.log(zeus.target); */
+
+// setter and getters in class to access to object :-
+/* class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  getWriter() {
+    return this._author;
+  }
+  setWriter(updateAuthor) {
+    this._author = updateAuthor;
+  }
+}
+book = new Book();
+book.setWriter("ali");
+console.log(book.getWriter()); */
+
+/* // challenge
+function makeClass() {
+  class Thermostat {
+    constructor(temp) {
+      this._temp = (5 / 9) * (temp - 32);
+    }
+    // getter
+    get temperature() {
+      return this._temp;
+    }
+    // setter
+    set temperature(updateTemp) {
+      this._temp = updateTemp;
+    }
+  }
+  return Thermostat;
+}
+
+const Thermostat = makeClass();
+const thermos = new Thermostat(76);
+let temp = thermos.temperature;
+thermos.temperature = 26;
+temp = thermos.temperature;
+console.log(temp); */
+
+// difference between import and require, export
+// use export to reuse a code block
+/* const capitalizeString = (str) => {
+  return str.CharAt(0).toUpperCase() + str.slice(1);
+};
+export {capitalizeString};
+
+export const foo = "bar";
+export const bar = "foo"; */
+// use import * everything from a file
