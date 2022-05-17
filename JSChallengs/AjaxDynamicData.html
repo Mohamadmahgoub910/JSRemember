@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Dynamic Table</title>
+
+    <style>
+      th {
+        color: #fff;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="search-input" class="form-control" type="text" />
+    <table class="table table-striped">
+      <tr class="bg-info">
+        <!-- <th>ID</th> -->
+        <th>Name</th>
+        <th>Age</th>
+        <th>birth date name</th>
+        <!-- <th>Image</th> -->
+      </tr>
+
+      <tbody id="myTable"></tbody>
+    </table>
+
+    <script>
+      var myArray = [
+        { name: "Michael", age: "30", birthdate: "11/10/1989" },
+        { name: "Mila", age: "32", birthdate: "10/1/1989" },
+        { name: "Paul", age: "29", birthdate: "10/14/1990" },
+        { name: "Dennis", age: "25", birthdate: "11/29/1993" },
+        { name: "Tim", age: "27", birthdate: "3/12/1991" },
+        { name: "Erik", age: "24", birthdate: "10/31/1995" },
+      ];
+      //   $.ajax({
+      //     method: "GET",
+      //     url: "https://reqres.in/api/users",
+      //     success: function (response) {
+      //       myArray = response.data;
+      //       displayData(myArray);
+      //       //   console.log(myArray);
+      //     },
+      //   });
+
+      $("#search-input").on("keyup", function () {
+        var value = $(this).val();
+        var data = searchTable(value, myArray);
+        displayData(data)
+        //   console.log(`Value is :- ${value}`);
+      });
+
+      displayData(myArray);
+      
+      function searchTable(value, data) {
+        var filteredData = [];
+        for (var i = 0; i < data.length; i++) {
+          value = value.toLowerCase();
+          var name = data[i].name.toLowerCase();
+          if (name.includes(value)) {
+            filteredData.push(data[i]);
+          }
+        }
+        return filteredData;
+      }
+
+      function displayData(data) {
+        var myTable = document.getElementById("myTable");
+        for (var i = 0; i < data.length; i++) {
+          var row = `<tr>
+            <td>${data[i].name}</td>
+            <td>${data[i].age}</td>
+            <td>${data[i].birthdate}</td>
+        </tr>`;
+          myTable.innerHTML += row;
+        }
+      }
+    </script>
+  </body>
+</html>

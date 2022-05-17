@@ -642,3 +642,29 @@ export {capitalizeString};
 export const foo = "bar";
 export const bar = "foo"; */
 // use import * everything from a file
+// Math.max
+// var arr = [2, 3, 4, 5];
+// JS 5
+// console.log(Math.max.apply(null, arr));
+// JS 6
+// console.log(Math.max(...arr));
+// var dt = new Date();
+// console.log(dt);
+// console.log(dt.getDate());
+// console.log(dt.getMonth());
+// console.log(dt.getHours());
+// console.log(dt.getDay());
+// var obj = {
+//   fname: "ali",
+//   lname: "m7gob",
+//   age: 32,
+//   display: function () {
+//     console.log(`fname-${this.fname}`);
+//   },
+//   countries: ["egypt", "japan"],
+// };
+
+// console.log(obj.display());
+// console.log(obj.countries[0]);
+// console.log(obj);
+//obj["countries"].forEach((elm) => console.log(elm));
