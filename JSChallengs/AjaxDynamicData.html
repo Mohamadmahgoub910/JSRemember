@@ -30,7 +30,6 @@
         <th>birth date name</th>
         <!-- <th>Image</th> -->
       </tr>
-
       <tbody id="myTable"></tbody>
     </table>
 
@@ -51,7 +50,7 @@
       //       displayData(myArray);
       //       //   console.log(myArray);
       //     },
-      //   });
+      //   }); 
 
       $("#search-input").on("keyup", function () {
         var value = $(this).val();
@@ -61,7 +60,7 @@
       });
 
       displayData(myArray);
-      
+
       function searchTable(value, data) {
         var filteredData = [];
         for (var i = 0; i < data.length; i++) {
