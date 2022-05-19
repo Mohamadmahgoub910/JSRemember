@@ -497,37 +497,60 @@
         page: 1,
         // display data
         rows: 5,
+        window: 4,
       };
       buildTable();
-    // pagination
+      // pagination
       function pagination(querySet, page, rows) {
         // starting and end point.
         var trimStart = (page - 1) * rows;
         var trimEnd = trimStart + rows;
-        var trimmedData = querySet.slice(trimStart,trimEnd);
-        var pages = Math.ceil(querySet.length/rows);
+        var trimmedData = querySet.slice(trimStart, trimEnd);
+        var pages = Math.ceil(querySet.length / rows);
         return {
-            'querySet':trimmedData,
-            'pages':pages
+          querySet: trimmedData,
+          pages: pages,
+        };
+      }
+      //  buttons
+      function pageButtons(pages) {
+        var wrapper = document.getElementById("pagination-wrapper");
+        wrapper.innerHTML = "";
+
+        var maxLeft = state.page - Math.floor(state.window / 2);
+        var maxRight = state.page + Math.floor(state.window / 2);
+        if (maxLeft < 1) {
+          maxLeft = 1;
+          maxRight = state.window;
         }
-      }
-    //  buttons 
-      function pageButtons (pages){
-          var wrapper = document.getElementById('pagination-wrapper')
-          wrapper.innerHTML =''
-          for(var page=1; page<=pages; page++){
-              wrapper.innerHTML += `<button value=${page} class="page btn btn-sm btn-info">${page}</button>`
+        if (maxRight > pages) {
+          maxLeft = pages - (state.window - 1);
+          maxRight = pages;
+          if (maxLeft < 1) {
+            maxLeft = 1;
           }
-          $('.page').on('click',function(){
-              $('#table-body').empty()
-              state.page = $(this).val()
-              buildTable()
-          })
+        }
+        for (var page = maxLeft; page <= maxRight; page++) {
+          wrapper.innerHTML += `<button value=${page} class="page btn btn-sm btn-info">${page}</button>`;
+        }
+        if (state.page != 1) {
+          wrapper.innerHTML =
+            `<button value=${1} class="page btn btn-sm btn-info">&#171; First</button>` +
+            wrapper.innerHTML;
+        }
+        if (state.page !== page) {
+          wrapper.innerHTML += `<button value=${pages} class="page btn btn-sm btn-info">&#171; Last</button>`;
+        }
+        $(".page").on("click", function () {
+          $("#table-body").empty();
+          state.page = $(this).val();
+          buildTable();
+        });
       }
-    //  buildTable
+      //  buildTable
       function buildTable() {
         var table = $("#table-body");
-        var data = pagination(state.querySet, state.page, state.rows)
+        var data = pagination(state.querySet, state.page, state.rows);
         // console.log(data);
         myList = data.querySet;
         for (var i = 1 in myList) {
@@ -538,9 +561,8 @@
                     </tr>`;
           table.append(row);
         }
-        pageButtons(data.pages)
+        pageButtons(data.pages);
       }
-    
     </script>
   </body>
 </html>
